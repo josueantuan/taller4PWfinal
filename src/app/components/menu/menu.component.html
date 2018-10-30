@@ -1,0 +1,26 @@
+<nav  class="navbar navbar-inverse" class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="marca" class="navbar-brand">Marcar Zona</a></li>
+    </ul>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="direccion" class="navbar-brand">Dirección</a></li>
+    </ul>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="sitio" class="navbar-brand">Elegir Sitio</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-log-in" (click)="logOut()"></span> Cerrar Sesión</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <!-- Jumbotron Header -->
+  <header class="jumbotron my-4">
+    <h1 class="display-3">  <strong>{{currentUser.fullName}}</strong>, Bienvenido </h1>
+    <p class="lead"> Bienvenido a tu perfil, ROLE: {{currentUser.role}}
+    </p>
+    <div class="row">
+    </div>
+  </header>
+</div>

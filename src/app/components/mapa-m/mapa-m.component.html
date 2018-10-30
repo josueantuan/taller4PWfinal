@@ -1,0 +1,14 @@
+<app-navbar></app-navbar>
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="15" *ngIf="permiso == 'USER'">
+    <agm-marker [latitude]="lat" [longitude]="lng">
+    </agm-marker>
+    <agm-circle [latitude]="lat"[longitude]="lng"[circleDraggable]="false" [editable]="false" 
+    [fillColor]="blue" [radius]="900"></agm-circle>
+</agm-map>
+<div class="container" *ngIf="permiso != 'USER'">
+  <header class="jumbotron my-4" >
+    <h1 class="display-3">  <strong>{{currentUser.fullName}}</strong>, Acceso no permitido </h1>
+    <div class="row">
+    </div>
+  </header>
+</div>
