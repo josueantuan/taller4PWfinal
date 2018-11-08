@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="card card-container">
+    <p id="profile-name" class="profile-name-card"></p>
+
+    <form name="form" (ngSubmit)=" register()" #f="ngForm" novalidate>
+      <div class="alert alert-danger" role="alert" ></div>
+      <span id="reauth-email" class="reauth-email"></span>
+      <div class="form-group">
+        <label for="names">Nombres</label>
+        <input type="text" class="form-control" name="names" id="names" [(ngModel)]="reg.names" #fullName="ngModel" required />
+        
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="errorMessage">{{errorMessage}}</div>
+      <span id="reauth-email" class="reauth-email"></span>
+      <div class="form-group" >
+        <label for="lastNames">Apellidos</label>
+        <input type="text" class="form-control" name="lastNames" id="lastNames" [(ngModel)]="reg.lastNames" #fullName="ngModel" required />
+        
+      </div>
+      <div class="form-group" >
+        <label for="cedula">Cédula</label>
+        <input type="text" class="form-control" name="cedula" id="cedula" [(ngModel)]="reg.cedula" #fullName="ngModel" required />
+        
+      </div>
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+        <label for="username">Correo Electrónico</label>
+        <input type="text" class="form-control" name="username" id="username" pattern="[^ @]*@[^ @]*" [(ngModel)]="reg.username" #username="ngModel" required />
+      
+      </div>
+      <div class="form-group" >
+        <label for="password">Contraseña</label>
+        <input type="password" class="form-control" name="password" id="password"[(ngModel)]="reg.password" #password="ngModel" required minlength="4" />
+       
+        
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="errorMessage">{{errorMessage}}</div>
+     
+      <div class="form-group" >
+        <label for="cellphone">Celular</label>
+        <input type="text" class="form-control" name="cellphone" id="cellphone" [(ngModel)]="reg.cellphone" #fullName="ngModel" required required maxlength="10"/>
+        <div  class="help-block">Ingrese su numero de celular</div>
+      
+      </div>
+      <div class="form-group" >
+        <label for="direccion">Dirección</label>
+        <input type="text" class="form-control" name="address" id="address"  [(ngModel)]="reg.address" #username="ngModel" required />
+      
+      </div>
+      <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Create Account</button>
+      <button [routerLink]="['/login']" class="btn btn-lg btn-danger btn-block btn-cancel" type="button">Cancel</button>
+
+    </form><!-- /form -->
+
+  </div><!-- /card-container -->
+</div><!-- /container -->

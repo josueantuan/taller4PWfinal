@@ -13,7 +13,8 @@ import { MapaDComponent } from './components/mapa-d/mapa-d.component';
 import { MapaSComponent } from './components/mapa-s/mapa-s.component';
 import { MapaMComponent } from './components/mapa-m/mapa-m.component';
 import { AgmCoreModule } from '@agm/core';
-import { AgmDirectionModule } from 'agm-direction'
+import { AgmDirectionModule } from 'agm-direction';
+import { RegisterComponent } from './components/register/register.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,8 @@ import { AgmDirectionModule } from 'agm-direction'
     MenuComponent,
     MapaDComponent,
     MapaSComponent,
-    MapaMComponent
+    MapaMComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

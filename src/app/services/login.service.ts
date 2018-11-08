@@ -3,6 +3,7 @@ import { Http, Headers, RequestOptions,Response} from '@angular/http';
 import {User} from "../model/model.user";
 import 'rxjs/add/operator/map';
 import {AppComponent} from "../app.component";
+import { Registro } from "../model/registro";
 
 
 @Injectable({
@@ -11,7 +12,7 @@ import {AppComponent} from "../app.component";
 export class LoginService {
 
   constructor(public http: Http) { }
-  public logIn(user: User){
+  public logIn(user: Registro){
 
     let headers = new Headers();
     headers.append('Accept', 'application/json')
