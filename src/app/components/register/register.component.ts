@@ -3,6 +3,7 @@ import {User} from "../../model/model.user";
 import { RegistroService } from "../../services/registro.service";
 import {Router} from "@angular/router";
 import { Registro } from "../../model/registro";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,9 @@ export class RegisterComponent implements OnInit {
   user: User = new User();
   errorMessage: string;
   reg: Registro = new Registro();
-  constructor(public accountService: RegistroService, public router: Router) { }
+  registerForm: FormGroup;
+  constructor(public accountService: RegistroService, public router: Router) {
+  }
 
   ngOnInit() {
   }
@@ -26,5 +29,34 @@ export class RegisterComponent implements OnInit {
         this.errorMessage = "username already exist";
       }
     )
+  }
+  onlyNumberKey(event) {
+    return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57;
+  }
+  onlyLetters(event){
+    let tecla = (document.all) ? event.keyCode : event.which;
+
+    //Tecla de retroceso para borrar, siempre la permite
+    if (tecla == 8) {
+        return true;
+    }
+
+    // Patron de entrada, en este caso solo acepta numeros y letras
+    let patron = /[A-Za-z]/;
+    let tecla_final = String.fromCharCode(tecla);
+    return patron.test(tecla_final);
+  }
+  address(event){
+    let tecla = (document.all) ? event.keyCode : event.which;
+
+    //Tecla de retroceso para borrar, siempre la permite
+    if (tecla == 8) {
+        return true;
+    }
+
+    // Patron de entrada, en este caso solo acepta numeros y letras
+    let patron = /[A-Za-z0-9- ]/;
+    let tecla_final = String.fromCharCode(tecla);
+    return patron.test(tecla_final);
   }
 }

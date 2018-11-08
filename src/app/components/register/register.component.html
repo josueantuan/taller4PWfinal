@@ -2,24 +2,25 @@
   <div class="card card-container">
     <p id="profile-name" class="profile-name-card"></p>
 
-    <form name="form" (ngSubmit)=" register()" #f="ngForm" novalidate>
-      <div class="alert alert-danger" role="alert" ></div>
+    <form name="form" (ngSubmit)=" register()" #f="ngForm" novalidate >
+      
       <span id="reauth-email" class="reauth-email"></span>
-      <div class="form-group">
+      <div class="form-group" >
         <label for="names">Nombres</label>
-        <input type="text" class="form-control" name="names" id="names" [(ngModel)]="reg.names" #fullName="ngModel" required />
+        <input type="text" class="form-control" name="names" id="names" [(ngModel)]="reg.names" #fullName="ngModel" required (keypress)="onlyLetters($event)" />
         
       </div>
       <div class="alert alert-danger" role="alert" *ngIf="errorMessage">{{errorMessage}}</div>
       <span id="reauth-email" class="reauth-email"></span>
       <div class="form-group" >
         <label for="lastNames">Apellidos</label>
-        <input type="text" class="form-control" name="lastNames" id="lastNames" [(ngModel)]="reg.lastNames" #fullName="ngModel" required />
+        <input type="text" class="form-control" name="lastNames" id="lastNames" [(ngModel)]="reg.lastNames" #fullName="ngModel" required (keypress)="onlyLetters($event)" />
         
       </div>
       <div class="form-group" >
         <label for="cedula">Cédula</label>
-        <input type="text" class="form-control" name="cedula" id="cedula" [(ngModel)]="reg.cedula" #fullName="ngModel" required />
+        <input type="text" class="form-control" name="cedula" id="cedula" [(ngModel)]="reg.cedula" #fullName="ngModel" required (keypress)="onlyNumberKey($event)"
+        required maxlength="10" minlength="10"/>
         
       </div>
       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
@@ -37,13 +38,13 @@
      
       <div class="form-group" >
         <label for="cellphone">Celular</label>
-        <input type="text" class="form-control" name="cellphone" id="cellphone" [(ngModel)]="reg.cellphone" #fullName="ngModel" required required maxlength="10"/>
+        <input type="text" class="form-control" name="cellphone" id="cellphone" [(ngModel)]="reg.cellphone" #fullName="ngModel" required required maxlength="10" (keypress)="onlyNumberKey($event)" />
         <div  class="help-block">Ingrese su numero de celular</div>
       
       </div>
       <div class="form-group" >
         <label for="direccion">Dirección</label>
-        <input type="text" class="form-control" name="address" id="address"  [(ngModel)]="reg.address" #username="ngModel" required />
+        <input type="text" class="form-control" name="address" id="address"  [(ngModel)]="reg.address" #username="ngModel" required (keypress)="address($event)"/>
       
       </div>
       <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Create Account</button>
