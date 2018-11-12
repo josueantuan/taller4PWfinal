@@ -3,7 +3,7 @@ import {User} from "../../model/model.user";
 import { RegistroService } from "../../services/registro.service";
 import {Router} from "@angular/router";
 import { Registro } from "../../model/registro";
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-register',
@@ -14,7 +14,8 @@ export class RegisterComponent implements OnInit {
   user: User = new User();
   errorMessage: string;
   reg: Registro = new Registro();
-  registerForm: FormGroup;
+  itemsGender: any[] = [{genero:"Masculino"}, {genero:"Femenino"}]
+  itemsNacio: any[] = [{nacionalidad:"Ecuatoriano"},{nacionalidad:"Venezolano"},{nacionalidad:"Cubano"}]
   constructor(public accountService: RegistroService, public router: Router) {
   }
 
@@ -26,7 +27,7 @@ export class RegisterComponent implements OnInit {
         this.router.navigate(['/login']);
       }, err => {
         console.log(err);
-        this.errorMessage = "username already exist";
+        this.errorMessage = "El dato registrado ya existe";
       }
     )
   }
