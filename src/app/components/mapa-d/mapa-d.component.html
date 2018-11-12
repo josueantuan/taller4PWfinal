@@ -1,11 +1,11 @@
 <app-navbar></app-navbar>
-<agm-map [latitude]="lat" [longitude]="lng" [zoom]="15" (mapClick)="mapClicked($event)" *ngIf="permiso != 'ADMIN'">
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="15" (mapClick)="mapClicked($event)" *ngIf="permiso == 'ADMIN'">
     <agm-direction [origin]="origin" [destination]="destination">
     </agm-direction>
 </agm-map>
 <div class="container" *ngIf="permiso != 'ADMIN'">
   <header class="jumbotron my-4" >
-    <h1 class="display-3">  <strong>{{currentUser.fullName}}</strong>, Acceso no permitido </h1>
+    <h1 class="display-3">  <strong>{{currentUser.names}}</strong>, Acceso no permitido </h1>
     <div class="row">
     </div>
   </header>
