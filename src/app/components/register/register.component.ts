@@ -3,6 +3,8 @@ import {User} from "../../model/model.user";
 import { RegistroService } from "../../services/registro.service";
 import {Router} from "@angular/router";
 import { Registro } from "../../model/registro";
+import { CatalogoService } from "../../services/catalogo.service";
+import { Catalogo } from "../../model/catalogo";
 
 
 @Component({
@@ -14,12 +16,29 @@ export class RegisterComponent implements OnInit {
   user: User = new User();
   errorMessage: string;
   reg: Registro = new Registro();
-  itemsGender: any[] = [{genero:"Masculino"}, {genero:"Femenino"}]
-  itemsNacio: any[] = [{nacionalidad:"Ecuatoriano"},{nacionalidad:"Venezolano"},{nacionalidad:"Cubano"}]
-  constructor(public accountService: RegistroService, public router: Router) {
+  catalogoN: Catalogo = new Catalogo();
+  responseData: any;
+  validationListG: any;
+  validationListF: any;
+  itemsGender: any[];
+  itemsFrom: any[];
+  constructor(public accountService: RegistroService, public router: Router, private catalogoService: CatalogoService) {
   }
 
   ngOnInit() {
+    this.reg.genero = '';
+    this.catalogoN.id_father = 4;
+    this.catalogoService.getFrom(this.catalogoN.id_father).then((data) => {
+      this.validationListF = JSON.parse(JSON.stringify(data)).response;
+      this.itemsFrom = this.validationListF;
+    });
+
+    this.catalogoN.id_father = 1;
+    let proG = this.catalogoService.getGender(this.catalogoN.id_father);
+    Promise.resolve(proG).then(data => {
+      this.validationListG = JSON.parse(JSON.stringify(data)).response;
+      this.itemsGender = this.validationListG;
+    });
   }
   register() {
     console.log(this.reg);

@@ -5,8 +5,8 @@ export class Registro {
     names: string="";
     lastNames: string="";
     cedula: string="";
-    genero: number;
+    genero:string="";
     address: string="";
     cellphone: string="";
-    nacionalidad: number;
+    nacionalidad: string="";
   }

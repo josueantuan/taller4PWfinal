@@ -23,23 +23,23 @@
         required maxlength="10" minlength="10"/>
         
       </div>
-        <!--
+   
       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !genero.valid }">
         <label for="gender">Género</label>
         <select [(ngModel)]="reg.genero" name="gender" class="form-control" id="genero" #genero="ngModel">
-          <option *ngFor="let key of itemsGender" >{{key.genero}}</option>
+          <option *ngFor="let key of itemsGender" [ngValue]="key[0]">{{ key[1] }}</option>
         </select>
-        <div *ngIf="f.submitted && !gender.valid" class="help-block">Seleccione su género</div>
+        
       </div>
 
       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !nacionalidad.valid }">
         <label for="nacionalidad">Nacionalidad</label>
         <select  class="form-control"  name="nacionalidad" id="nacionalidad" [(ngModel)]="reg.nacionalidad" #nacionalidad="ngModel">
-          <option *ngFor="let key of itemsNacio" >{{ key.nacionalidad }}</option>
+          <option *ngFor="let key of itemsFrom" [ngValue]="key[0]">{{ key[1] }}</option>
         </select>
-        <div *ngIf="f.submitted && !nacionalidad.valid" class="help-block">Seleccione su nacionalidad</div>
+       
       </div>
-      -->
+      
       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
         <label for="username">Correo Electrónico</label>
         <input type="text" class="form-control" name="username" id="username" pattern="[^ @]*@[^ @]*" [(ngModel)]="reg.username" #username="ngModel" required />
